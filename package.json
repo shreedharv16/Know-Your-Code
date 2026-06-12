@@ -1,19 +1,16 @@
 {
   "name": "trace-your-code",
-  "displayName": "Trace Your Code — AI Coding Time Machine",
+  "displayName": "Trace Your Code",
   "description": "Every prompt becomes a chapter. See what Claude Code / Copilot actually changed (real diffs, never chat claims), scrub any file back through time, undo any turn, and ask \"what broke since it last worked?\". Local-only; works with no API key.",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "publisher": "shreedharvellayaraj",
   "license": "MIT",
   "icon": "media/icon-128.png",
   "repository": {
     "type": "git",
-    "url": "https://github.com/REPLACE-WITH-YOUR-USERNAME/REPLACE-WITH-YOUR-REPO.git"
+    "url": "https://github.com/shreedharv16/Know-Your-Code"
   },
-  "bugs": {
-    "url": "https://github.com/REPLACE-WITH-YOUR-USERNAME/REPLACE-WITH-YOUR-REPO/issues"
-  },
-  "homepage": "https://github.com/REPLACE-WITH-YOUR-USERNAME/REPLACE-WITH-YOUR-REPO#readme",
+  "homepage": "https://github.com/shreedharv16/Know-Your-Code/blob/main/README.md",
   "engines": {
     "vscode": "^1.85.0"
   },

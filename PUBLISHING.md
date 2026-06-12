@@ -203,3 +203,4 @@ This audience matters MORE for an AI-coding tool than the MS marketplace.
 [ ] `vsce publish` (MS) + `ovsx publish` (Open VSX)
 [ ] git tag + GitHub release with .vsix attached
 [ ] grep the repo for keys one more time. Paranoia is free; leaks are not.
++
