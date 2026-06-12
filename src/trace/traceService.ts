@@ -11,6 +11,7 @@ import {
 } from "./traceTypes";
 import { parseClaudeCode } from "./claudeCodeParser";
 import { parseCopilotChat } from "./copilotChatParser";
+import { parseAntigravity } from "./antigravityParser";
 import { ShadowRepo } from "./shadowRepo";
 import { extractCodeFacts } from "./codeFacts";
 
@@ -107,7 +108,7 @@ export class TraceService {
       return this.data.turns;
     }
     const want = new Set<TraceSource>(
-      sources ?? ["claude-code", "copilot-chat"]
+      sources ?? ["claude-code", "copilot-chat", "antigravity"]
     );
 
     const fresh: TraceTurn[] = [];
@@ -123,6 +124,13 @@ export class TraceService {
         fresh.push(
           ...(await parseCopilotChat(root, this.chatSessionsDir))
         );
+      } catch {
+        // ignore
+      }
+    }
+    if (want.has("antigravity")) {
+      try {
+        fresh.push(...(await parseAntigravity(root)));
       } catch {
         // ignore
       }

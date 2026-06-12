@@ -11,7 +11,7 @@
  */
 
 /** Which assistant produced a turn. */
-export type TraceSource = "claude-code" | "copilot-chat";
+export type TraceSource = "claude-code" | "copilot-chat" | "antigravity";
 
 /** A single tool invocation the assistant made during a turn. */
 export interface TraceAction {

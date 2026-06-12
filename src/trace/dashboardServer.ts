@@ -293,6 +293,7 @@ const PAGE = `<!DOCTYPE html>
   .src { font-size:10px; font-weight:800; padding:2px 7px; border-radius:5px; text-transform:uppercase; letter-spacing:.04em; }
   .src.claude-code { background:rgba(204,120,50,.18); color:#d9883f; }
   .src.copilot-chat { background:rgba(80,140,255,.16); color:#6ea8fe; }
+  .src.antigravity { background:rgba(66,133,244,.16); color:#8ab4f8; }
   .mtag { font-size:10.5px; padding:1px 7px; border-radius:5px; background:var(--panel);
           border:1px solid var(--line); color:var(--muted); }
 
@@ -451,6 +452,7 @@ const PAGE = `<!DOCTYPE html>
     <option value="all">All assistants</option>
     <option value="claude-code">Claude Code</option>
     <option value="copilot-chat">Copilot Chat</option>
+    <option value="antigravity">Antigravity</option>
   </select>
   <span class="muted" id="fcount"></span>
 </div>
@@ -579,7 +581,7 @@ function turnCard(t){
   var snap = t.snapshot || {};
   var html = ['<div class="turncard'+(inconseq(t)?' dim':'')+'" data-turn="'+esc(t.id)+'">'];
   html.push('<div class="t-top">',
-    '<span class="src '+esc(t.source)+'">'+(t.source==='claude-code'?'Claude':'Copilot')+'</span>',
+    '<span class="src '+esc(t.source)+'">'+(t.source==='claude-code'?'Claude':t.source==='copilot-chat'?'Copilot':'Antigravity')+'</span>',
     t.model?'<span class="mtag">'+esc(shortModel(t.model))+'</span>':'',
     '<span class="t-when">'+esc(fmtTime(t.timestamp))+'</span>',
     snap.historical?'<span class="chip">pre-install</span>':'',
@@ -633,7 +635,7 @@ function turnCard(t){
 function renderStory(turns){
   var pane = document.getElementById('pane-story');
   if (!turns.length) {
-    pane.innerHTML = '<div class="empty">No activity recorded yet.<br>Use Claude Code or Copilot Chat in this workspace — each turn becomes a chapter here automatically.</div>';
+    pane.innerHTML = '<div class="empty">No activity recorded yet.<br>Use Claude Code, Copilot Chat, or Antigravity in this workspace — each turn becomes a chapter here automatically.</div>';
     return;
   }
   var bySession = {};
@@ -764,7 +766,7 @@ function renderFileTree(counts){
 function stepInfoHtml(cur){
   var snap = (cur && cur.snapshot) || {};
   return '<div class="stepinfo">'+
-    '<div class="t-top"><span class="src '+esc(cur.source)+'">'+(cur.source==='claude-code'?'Claude':'Copilot')+'</span>'+
+    '<div class="t-top"><span class="src '+esc(cur.source)+'">'+(cur.source==='claude-code'?'Claude':cur.source==='copilot-chat'?'Copilot':'Antigravity')+'</span>'+
     (cur.model?'<span class="mtag">'+esc(shortModel(cur.model))+'</span>':'')+
     '<span class="t-when">'+esc(fmtTime(cur.timestamp))+'</span>'+
     (snap.historical?'<span class="chip">pre-install</span>':'')+'</div>'+

@@ -176,6 +176,7 @@ export class TraceViewProvider implements vscode.WebviewViewProvider {
   .src { flex: 0 0 auto; font-size: 10px; font-weight: 700; padding: 1px 5px; border-radius: 3px; text-transform: uppercase; letter-spacing: .03em; }
   .src.claude-code { background: rgba(204,120,50,.22); color: #d9883f; }
   .src.copilot-chat { background: rgba(80,140,255,.20); color: #6ea8fe; }
+  .src.antigravity { background: rgba(66,133,244,.20); color: #8ab4f8; }
   .prompt { flex: 1 1 auto; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .model { flex: 0 0 auto; font-size: 10px; padding: 1px 5px; border-radius: 3px; background: rgba(128,128,128,.18); color: var(--vscode-descriptionForeground); font-variant-numeric: tabular-nums; }
   .when { flex: 0 0 auto; color: var(--vscode-descriptionForeground); font-size: 11px; font-variant-numeric: tabular-nums; }
@@ -233,6 +234,7 @@ export class TraceViewProvider implements vscode.WebviewViewProvider {
     <option value="all">Both</option>
     <option value="claude-code">Claude</option>
     <option value="copilot-chat">Copilot</option>
+    <option value="antigravity">Antigravity</option>
   </select>
 </div>
 <div id="root"></div>
@@ -296,7 +298,7 @@ export class TraceViewProvider implements vscode.WebviewViewProvider {
     // Only badge the source when the timeline actually mixes assistants \u2014
     // a wall of identical "CLAUDE" chips is noise, not signal.
     if (mixedSources) {
-      const src = document.createElement('span'); src.className = 'src ' + turn.source; src.textContent = turn.source === 'claude-code' ? 'Claude' : 'Copilot';
+      const src = document.createElement('span'); src.className = 'src ' + turn.source; src.textContent = turn.source === 'claude-code' ? 'Claude' : turn.source === 'copilot-chat' ? 'Copilot' : 'Antigravity';
       head.appendChild(src);
     }
     head.append(prompt, when);
@@ -414,7 +416,7 @@ export class TraceViewProvider implements vscode.WebviewViewProvider {
       const e = document.createElement('div'); e.className = 'empty';
       e.textContent = allTurns.length
         ? 'No turns match the current filter.'
-        : 'No assistant activity yet. Use Claude Code or Copilot Chat in this workspace \u2014 turns appear here automatically. For the full story (scrubbing, diffs, explanations), open the Project Story dashboard below.';
+        : 'No assistant activity yet. Use Claude Code, Copilot Chat, or Antigravity in this workspace \u2014 turns appear here automatically. For the full story (scrubbing, diffs, explanations), open the Project Story dashboard below.';
       root.appendChild(e);
       return;
     }
