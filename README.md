@@ -29,6 +29,11 @@ your codebase.
 
 ## What you get
 
+![Screenshot 1](img/img1.jpeg)
+![Screenshot 2](img/img2.jpeg)
+![Screenshot 3](img/img3.jpeg)
+![Screenshot 4](img/img4.jpeg)
+
 ### 📖 Project Story (dashboard)
 A local dashboard (`Trace Your Code: Open Project Story`) with the full narrative:
 
