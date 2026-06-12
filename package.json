@@ -2,7 +2,7 @@
   "name": "trace-your-code",
   "displayName": "Trace Your Code",
   "description": "Every prompt becomes a chapter. See what Claude Code / Copilot actually changed (real diffs, never chat claims), scrub any file back through time, undo any turn, and ask \"what broke since it last worked?\". Local-only; works with no API key.",
-  "version": "0.5.4",
+  "version": "0.5.5",
   "publisher": "shreedharvellayaraj",
   "license": "MIT",
   "icon": "media/icon-128.png",
